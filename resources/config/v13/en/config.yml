@@ -5,10 +5,10 @@
 # Defaults are written in []
 
 # Languagefile to be used (found in plugins/Brewery/languages)
-language: en
+language: ru
 
 # If the player wakes up at /home when logging in after excessive drinking (/home plugin must be installed!) [true]
-enableHome: true
+enableHome: false
 
 # Type of the home-teleport: ['cmd: home']
 # bed = Player will be teleported to his spawn bed
@@ -19,7 +19,7 @@ homeType: 'cmd: home'
 
 # If the player "wakes up" at a random place when offline for some time while drinking (the places have to be defined with '/brew Wakeup add' through an admin)
 # The Player wakes at the nearest of two random places of his world [true]
-enableWake: true
+enableWake: false
 
 # If the Player may have to try multiple times when logging in while extremely drunk [true]
 enableLoginDisallow: true
@@ -29,7 +29,7 @@ enableKickOnOverdrink: false
 
 # If the Player vomits on high drunkeness (drops item defined below) [true]
 # The item can not be collected and stays on the ground until it despawns.
-enablePuke: true
+enablePuke: false
 
 # Item that is dropped multiple times uncollectable when puking [Soul_Sand]
 pukeItem: Soul_Sand
@@ -80,10 +80,10 @@ encodeKey: 0
 
 # Enable checking for Updates, Checks the curseforge api for updates to Brewery [true]
 # If an Update is found a Message is logged on Server-start and displayed to OPs joining the game
-updateCheck: true
+updateCheck: false
 
 # Autosave interval in minutes [3]
-autosave: 3
+autosave: 1
 
 # Show debug messages in log [false]
 debug: false
@@ -102,83 +102,39 @@ version: '3.1'
 #  lore: What has to be in the lore of the item
 
 customItems:
-  # Three Example Items
-  ex-item:
-    # A Barrier item called Wall and has the given line in its lore
-    material: Barrier
-    name: 'Wall'
-    lore:
-      - '&7Very well protected'
-
-  ex-item2:
-    # Using matchAny only one of the following has to match.
-    # In this case on of the door types, or an item called Beechwood Door, or an item with 'A door' in its lore
-    matchAny: true
-    material:
-      - Acacia_Door
-      - Oak_Door
-      - Spruce_Door
-    name:
-      - 'Beechwood Door'
-    lore:
-      - 'A door'
-
-  rasp:
-    name: '&cRaspberry'
-
-  blue-flowers:
-    matchAny: true
-    material:
-      - cornflower
-      - blue_orchid
 
 
 # -- Ingredients in the Cauldron --
 # Which Ingredients are accepted by the Cauldron and the base potion resulting from them
 # You only need to add something here if you want to specify a custom name or color for the base potion
 
- # name: Name of the base potion coming out of the Cauldron (Formatting codes possible: such as &6)
- # ingredients: List of 'material/amount'
- #   With an item in your hand, use /brew ItemName to get its material for use in a recipe
- #   (Item-ids instead of material are not supported by bukkit anymore and will not work)
- #   A list of materials can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
- # color: Color of the base potion from a cauldron. Defaults to CYAN
- #   Usable Colors: DARK_RED, RED, BRIGHT_RED, ORANGE, YELLOW, PINK, PURPLE, BLUE, CYAN, WATER, TEAL, OLIVE, GREEN, LIME, BLACK, GREY, BRIGHT_GREY, WHITE
- #   Or RGB colors (hex: for example '99FF33') (with '') (search for "HTML color" on the internet)
- # cookParticles:
- #   Color of the Particles above the cauldron at different cooking-times
- #   Color and minute during which each color should appear, i.e. one color at 8 minutes fading to another at 18 minutes.
- #   As List, each Color as name or RGB, see above. Written as 'Color/Minute'
- #   It will fade to the last color in the end, if there is only one color in the list, it will fade to grey
- # lore: List of additional text on the base potion. (Formatting codes possible: such as &6)
- # customModelData: Custom Model Data Tag. This is a number that can be used to add custom textures to the item.
+# name: Name of the base potion coming out of the Cauldron (Formatting codes possible: such as &6)
+# ingredients: List of 'material/amount'
+#   With an item in your hand, use /brew ItemName to get its material for use in a recipe
+#   (Item-ids instead of material are not supported by bukkit anymore and will not work)
+#   A list of materials can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# color: Color of the base potion from a cauldron. Defaults to CYAN
+#   Usable Colors: DARK_RED, RED, BRIGHT_RED, ORANGE, YELLOW, PINK, PURPLE, BLUE, CYAN, WATER, TEAL, OLIVE, GREEN, LIME, BLACK, GREY, BRIGHT_GREY, WHITE
+#   Or RGB colors (hex: for example '99FF33') (with '') (search for "HTML color" on the internet)
+# cookParticles:
+#   Color of the Particles above the cauldron at different cooking-times
+#   Color and minute during which each color should appear, i.e. one color at 8 minutes fading to another at 18 minutes.
+#   As List, each Color as name or RGB, see above. Written as 'Color/Minute'
+#   It will fade to the last color in the end, if there is only one color in the list, it will fade to grey
+# lore: List of additional text on the base potion. (Formatting codes possible: such as &6)
+# customModelData: Custom Model Data Tag. This is a number that can be used to add custom textures to the item.
 
 cauldron:
   # Example with all possible entries
-  ex:
-    name: Example
-    ingredients:
-      - Bedrock/2
-      - Diamond
-    color: BLACK
-    cookParticles:
-      - 'RED/5'
-      - 'WHITE/10'
-      - '800000/25' # maroon
-    lore:
-      - An example for a Base Potion
-      - This is how it comes out of a Cauldron
-    customModelData: 545
-
   # -- One Ingredient: --
   wheat:
-    name: Fermented wheat
+    name: Ферментированная Пшеница
     ingredients: Wheat
     cookParticles:
       - '2d8686/8' # Dark Aqua
 
   sugarcane:
-    name: Sugar brew
+    name: Сахарный Напиток
     ingredients: Sugar_Cane
     color: 'f1ffad' # yellowish green
     cookParticles:
@@ -186,18 +142,18 @@ cauldron:
       - '858547/10' # dark olive
 
   sugar:
-    name: Sugarwater
+    name: Сахарная Вода
     ingredients: Sugar
     cookParticles:
       - 'WHITE/4'
       - 'BRIGHT_GREY/25'
 
   apple:
-    name: Apple must
+    name: Яблочный Муст
     ingredients: Apple
 
   berries:
-    name: Grape must
+    name: Виноградный Муст
     ingredients: Sweet_Berries
     color: RED
     cookParticles:
@@ -206,33 +162,33 @@ cauldron:
       - 'ac6553/13' # brown-red
 
   potato:
-    name: Potatomash
+    name: Картофельное Пюре
     ingredients: Potato
 
   grass:
-    name: Boiled herbs
-    ingredients: Grass
+    name: Отварные Травы
+    ingredients: Short_Grass
     color: '99ff66' # bright green
     cookParticles:
       - 'GREEN/2'
       - '99ff99/20' # faded green
 
   rmushroom:
-    name: Mushroom brew
+    name: Грибной Настой
     ingredients: Red_Mushroom
     color: 'ff5c33' # amber red
     cookParticles:
       - 'fab09e/15' # faded red
 
   bmushroom:
-    name: Mushroom brew
+    name: Грибной Настой
     ingredients: Brown_Mushroom
     color: 'c68c53' # brighter brown
     cookParticles:
       - 'c68c53/15'
 
   cocoa:
-    name: Chocolately brew
+    name: Шоколадный Напиток
     ingredients: Cocoa_Beans
     color: '804600' # mocca
     cookParticles:
@@ -241,7 +197,7 @@ cauldron:
       - '4d4133/8' # Gray-brown
 
   milk:
-    name: Milky water
+    name: Молочная Вода
     ingredients: Milk_Bucket
     color: BRIGHT_GREY
     cookParticles:
@@ -249,34 +205,34 @@ cauldron:
       - 'WHITE/6'
 
   bl_flow:
-    name: Blueish brew
-    ingredients: blue-flowers
+    name: Голубоватый Напиток
+    ingredients: cornflower
     color: '0099ff' # sky blue
     cookParticles:
       - '0099ff'
 
   cactus:
-    name: Agave brew
+    name: Настой Агавы
     ingredients: cactus
     color: '00b300' # cactus green
     cookParticles:
       - '00b300/16'
 
   poi_potato:
-    name: Poisonous Broth
+    name: Ядовитый Бульон
     ingredients: Poisonous_Potato
 
   egg:
-    name: Sticky brew
+    name: Липкий Напиток
     ingredients: Egg
 
 
   oak_sapling:
-    name: Stringy hebry broth
+    name: Густой Бульон
     ingredients: Oak_Sapling
 
   vine:
-    name: Boiled herbs
+    name: Отварные Травы
     ingredients: vine
     color: '99ff66' # bright green
     cookParticles:
@@ -284,7 +240,7 @@ cauldron:
       - '99ff99/20' # faded green
 
   rot_flesh:
-    name: Foul pest
+    name: Гнилой Напиток
     ingredients: Rotten_Flesh
     color: '263300' # brown green
     cookParticles:
@@ -292,28 +248,28 @@ cauldron:
       - 'BLACK/20'
 
   melon:
-    name: Melon juice
+    name: Арбузный Сок
     ingredients: melon_slice
 
   wheat_seeds:
-    name: Bitter brew
+    name: Горькое Варево
     ingredients: Wheat_Seeds
 
   melon_seeds:
-    name: Bitter brew
+    name: Горькое Варево
     ingredients: Melon_Seeds
 
   pumpkin_seeds:
-    name: Bitter brew
+    name: Горькое Варево
     ingredients: Pumpkin_Seeds
 
   bone_meal:
-    name: Bony Brew
+    name: Костлявое Пиво
     ingredients: bone_meal
     color: BRIGHT_GREY
 
   cookie:
-    name: Chocolately sap
+    name: Шоколадный Сок
     ingredients: Cookie
     color: '804600' # mocca
     cookParticles:
@@ -322,26 +278,26 @@ cauldron:
       - '4d4133/8' # Gray-brown
 
   fer_spid_eye:
-    name: Fermented Eye
+    name: Ферментированный Глаз
     ingredients: Fermented_Spider_Eye
 
   ghast_tear:
-    name: Sad brew
+    name: Грустное Пиво
     ingredients: ghast_tear
 
   snowball:
-    name: Icewater
+    name: Вода Со Льдом
     ingredients: Snowball
 
   Gold_Nugget:
-    name: Glistering brew
+    name: Блестящий Напиток
     ingredients: Gold_Nugget
     color: 'ffd11a' # gold
     cookParticles:
       - 'ffd11a'
 
   glowstone_dust:
-    name: Glowing brew
+    name: Светящийся Напиток
     ingredients: Glowstone_Dust
     color: 'ffff33' # bright yellow
     cookParticles:
@@ -350,7 +306,7 @@ cauldron:
 
   # -- Multiple Ingredients: --
   applemead_base:
-    name: Apple-Sugar brew
+    name: Яблочно-сахарный Настой
     ingredients:
       - Sugar_Cane/3
       - Apple
@@ -359,9 +315,9 @@ cauldron:
       - 'e1ff4d/4'
 
   poi_grass:
-    name: Boiled acidy herbs
+    name: Отварные Кислые Травы
     ingredients:
-      - Grass
+      - Short_Grass
       - Poisonous_Potato
     color: '99ff66' # bright green
     cookParticles:
@@ -369,18 +325,18 @@ cauldron:
       - '99ff99/20' # faded green
 
   juniper:
-    name: Juniper brew
+    name: Можжевеловый Напиток
     ingredients:
-      - blue-flowers
+      - cornflower
       - wheat
     color: '00ccff' # aqua
     cookParticles:
       - '00ccff/8'
 
   gin_base:
-    name: Fruity juniper brew
+    name: Фруктовый Можжевеловый Напиток
     ingredients:
-      - blue-flowers
+      - cornflower
       - wheat
       - apple
     color: '66e0ff' # lighter aqua
@@ -388,7 +344,7 @@ cauldron:
       - '00ccff/5'
 
   eggnog_base:
-    name: Smooth egg mixture
+    name: Яичная Смесь
     ingredients:
       - egg
       - sugar
@@ -436,46 +392,8 @@ cauldron:
 
 recipes:
   #  Example Recipe with every possible entry first:
-  ex:
-    name: Bad Example/Example/Good Example
-    ingredients:
-      - Diamond/1
-      - Spruce_Planks/8
-      - Bedrock/1
-      - Brewery:Wheatbeer/2
-#      - ExoticGarden:Grape/3
-      - ex-item/4
-    cookingtime: 3
-    distillruns: 2
-    distilltime: 60
-    wood: 4
-    age: 11
-    color: DARK_RED
-    difficulty: 3
-    alcohol: 14
-    lore:
-      - This is an examble brew
-      - ++Just a normal Example
-      - This text would be on the brew
-      - + Smells disgusting
-      - ++ Smells alright
-      - +++ Smells really good
-    servercommands:
-      - +++ weather clear
-      - + weather rain
-    playercommands:
-      - homes
-    drinkmessage: Tastes good
-    drinktitle: Warms you from inside
-    customModelData: 556/557/557
-    effects:
-      - FIRE_RESISTANCE/20
-      - HEAL/1
-      - WEAKNESS/2-3/50-60
-      - POISON/1-0/20-0
-
   wheatbeer:
-    name: Skunky Wheatbeer/Wheatbeer/Fine Wheatbeer
+    name: Плохое Пшеничное Пиво/Пшеничное пиво/Отличное Пшеничное Пиво
     ingredients:
       - Wheat/3
     cookingtime: 8
@@ -485,10 +403,10 @@ recipes:
     color: 'ffb84d' # Orange
     difficulty: 1
     alcohol: 5
-    lore: +++ &8Refreshing
+    lore: +++ &8Освежающий
 
   beer:
-    name: Skunky Beer/Beer/Fine Beer
+    name: Плохое Пиво/Пиво/Отличное Пиво
     ingredients:
       - Wheat/6
     cookingtime: 8
@@ -498,11 +416,11 @@ recipes:
     color: 'ffd333' # Bright Orange
     difficulty: 1
     lore:
-      - +++ &8Crisp taste
+      - +++ &8Свежий вкус
     alcohol: 6
 
   darkbeer:
-    name: Skunky Darkbeer/Darkbeer/Fine Darkbeer
+    name: Плохое Тёмное Пиво/Тёмное Пиво/Отличное Тёмное Пиво
     ingredients:
       - Wheat/6
     cookingtime: 8
@@ -512,11 +430,11 @@ recipes:
     color: '650013' # Dark Red-Brown
     difficulty: 2
     lore:
-      - +++ &8Roasted taste
+      - +++ &8Жареный вкус
     alcohol: 7
 
   wine:
-    name: Red Wine
+    name: Красное Вино
     ingredients:
       - Sweet_Berries/5
     cookingtime: 5
@@ -527,13 +445,13 @@ recipes:
     difficulty: 4
     alcohol: 8
     lore:
-      - '+ &8Harsh'
-      - '+ &8Corked'
-      - '++ &8Mellow'
-      - '+++ &8Full-Bodied'
+      - '+ &8Жесткий'
+      - '+ &8Закупоренный'
+      - '++ &8Мягкий'
+      - '+++ &8Насыщенный'
 
   mead:
-    name: Awkward Mead/Mead/&6Golden Mead
+    name: Плохой Мёд/Мёд/&6Золотой Мёд
     ingredients:
       - Sugar_Cane/6
     cookingtime: 3
@@ -543,11 +461,11 @@ recipes:
     color: ORANGE
     difficulty: 2
     lore:
-      - +++ Has a golden shine
+      - +++ Имеет золотой блеск
     alcohol: 9
 
   ap_mead:
-    name: Apple Mead/Sweet Apple Mead/&6Sweet Golden Apple Mead
+    name: Яблочный Мёд/Сладкий Яблочный Мёд/&6Сладкий Золотой Яблочный Мёд
     ingredients:
       - Sugar_Cane/6
       - Apple/2
@@ -559,14 +477,14 @@ recipes:
     difficulty: 4
     alcohol: 11
     lore:
-      - +Is there any Apple in this?
-      - ++Refreshing taste of Apple
-      - +++Sweetest hint of Apple
+      - +Есть ли в этом яблоко?
+      - ++Освежающий вкус яблока
+      - +++Очень сладкий со вкусом яблока
     effects:
       - WATER_BREATHING/1-2/150
 
   cidre:
-    name: Poor Cidre/Apple Cider/Great Apple Cider
+    name: Плохой Сидр/Яблочный Сидр/Хороший Яблочный Сидр
     ingredients:
       - Apple/14
     cookingtime: 7
@@ -578,7 +496,7 @@ recipes:
     alcohol: 7
 
   apple_liquor:
-    name: Sour Apple Liquor/Apple Liquor/Calvados
+    name: Кисло-яблочный Ликёр/Яблочный Ликёр/Кальвадос
     ingredients:
       - Apple/12
     cookingtime: 16
@@ -589,11 +507,11 @@ recipes:
     difficulty: 5
     alcohol: 14
     lore:
-      - +Sour like Acid
-      - +++ Good Apple Liquor
+      - +Кислый, как кислота
+      - +++Хороший яблочный ликер
 
   whiskey:
-    name: Unsightly Whiskey/Whiskey/Scotch Whiskey
+    name: Отвратительный Виски/Виски/Шотландский Виски
     ingredients:
       - Wheat/10
     cookingtime: 10
@@ -604,10 +522,10 @@ recipes:
     color: ORANGE
     difficulty: 7
     alcohol: 26
-    lore: '&7Single Malt'
+    lore: '&7Односолодовый'
 
   rum:
-    name: Bitter Rum/Spicy Rum/&6Golden Rum
+    name: Горький Ром/Пряный Ром/&6Золотой Ром
     ingredients:
       - Sugar_Cane/18
     cookingtime: 6
@@ -622,12 +540,12 @@ recipes:
       - FIRE_RESISTANCE/1/20-100
       - POISON/1-0/30-0
     lore:
-      - +&8Too bitter to drink
-      - ++&8Spiced by the barrel
-      - +++&eSpiced Gold
+      - +&8Слишком горько, чтобы пить
+      - ++&8Пряный из бочки
+      - +++&eПряное золото
 
   vodka:
-    name: Lousy Vodka/Vodka/Russian Vodka
+    name: Паршивая Водка/Водка/Русская Водка
     ingredients:
       - Potato/10
     cookingtime: 15
@@ -636,13 +554,13 @@ recipes:
     color: WHITE
     difficulty: 4
     alcohol: 20
-    lore: + &8Almost undrinkable
+    lore: +&8Почти непригодно для питья
     effects:
       - WEAKNESS/15
       - POISON/10
 
   shroom_vodka:
-    name: Mushroom Vodka/Mushroom Vodka/Glowing Mushroom Vodka
+    name: Грибная Водка/Грибная Водка/Светящаяся Грибная Водка
     ingredients:
       - Potato/10
       - Red_Mushroom/3
@@ -653,7 +571,7 @@ recipes:
     color: 'ff9999' # Pink-Red
     difficulty: 7
     alcohol: 18
-    lore: +++&aGlows in the dark
+    lore: +++&aСветится в темноте
     effects:
       - WEAKNESS/80
       - CONFUSION/27
@@ -662,10 +580,10 @@ recipes:
       - SLOW/10-3
 
   gin:
-    name: Pale Gin/Gin/Old Tom Gin
+    name: Бледный Джин/Джин/Старый Отличный Джин
     ingredients:
       - Wheat/9
-      - blue-flowers/6  # Custom-Item: Blue Orchids or Cornflowers
+      - Cornflower/6  # Custom-Item: Blue Orchids or Cornflowers
       - Apple/1
     cookingtime: 6
     distillruns: 2
@@ -673,13 +591,13 @@ recipes:
     difficulty: 6
     alcohol: 20
     lore:
-      - ++ With the
-      - ++ taste of juniper
-      - +++ Perfectly finished off
-      - +++ with juniper
+      - ++ С....
+      - ++ Вкус можжевельника
+      - +++ Отличный вкус
+      - +++ С можжевельником
 
   tequila:
-    name: Mezcal/Tequila/Tequila anejo
+    name: Мескаль/Текила/Текила Аньехо
     ingredients:
       - cactus/8
     cookingtime: 15
@@ -689,12 +607,12 @@ recipes:
     wood: 1
     age: 12
     alcohol: 20
-    lore: Desert spirit
+    lore: Вкус песка
 
   absinthe:
-    name: Poor Absinthe/Absinthe/Strong Absinthe
+    name: Бедный Абсент/Абсент/Крепкий Абсент
     ingredients:
-      - Grass/15
+      - Short_Grass/15
     cookingtime: 3
     distillruns: 6
     distilltime: 80
@@ -703,12 +621,12 @@ recipes:
     alcohol: 42
     effects:
       - POISON/15-25
-    lore: '+++&8High proof liquor'
+    lore: '+++&8Крепкий спиртной напиток'
 
   gr_absinthe:
-    name: Poor Absinthe/Green Absinthe/Bright Green Absinthe
+    name: Бедный Абсент/Зелёный Абсент/Ярко-зеленый Абсент
     ingredients:
-      - Grass/17
+      - Short_Grass/17
       - Poisonous_Potato/2
     cookingtime: 5
     distillruns: 6
@@ -720,13 +638,13 @@ recipes:
       - POISON/25-40
       - HARM/2
       - NIGHT_VISION/40-60
-    lore: '&aLooks poisonous'
+    lore: '&aВыглядит ядовито'
 
   potato_soup:
-    name: Potato soup
+    name: Картофельный Суп
     ingredients:
       - Potato/5
-      - Grass/3
+      - Short_Grass/3
     cookingtime: 3
     color: ORANGE
     difficulty: 1
@@ -734,7 +652,7 @@ recipes:
       - HEAL/0-1
 
   coffee:
-    name: Stale Coffee/Coffee/Strong Coffee
+    name: Несвежий Кофе/Кофе/Крепкий Кофе
     ingredients:
       - Cocoa_Beans/12
       - Milk_Bucket/2
@@ -742,13 +660,13 @@ recipes:
     color: BLACK
     difficulty: 3
     alcohol: -6
-    lore: + &8Probably a week old
+    lore: + &8Наверное, неделя
     effects:
       - REGENERATION/1/2-5
       - SPEED/1/30-140
 
   eggnog:
-    name: Egg Liquor/Eggnog/Advocaat
+    name: Яичный Ликер/Эгг-ног/Advocaat
     ingredients:
       - Egg/5
       - Sugar/2
@@ -759,14 +677,14 @@ recipes:
     alcohol: 10
     wood: 0
     age: 3
-    lore: Made with raw egg
+    lore: Сделано из сырого яйца
 
 
 
 
-# I don't want to add more Recipes to the default config, as they would be public and viewable by users to cheat.
-# It is up to the Serveradmin to change and add Recipes, so players cannot cheat from the default config.
-# Some suggestions for recipes you could use:
+  # I don't want to add more Recipes to the default config, as they would be public and viewable by users to cheat.
+  # It is up to the Serveradmin to change and add Recipes, so players cannot cheat from the default config.
+  # Some suggestions for recipes you could use:
 
   # g_vodka:
   #   name: 'Rancid Vodka/&6Golden Vodka/&6Shimmering Golden Vodka'
@@ -798,7 +716,7 @@ recipes:
   #   alcohol: 28
   #   drinkmessage: 'You get a burning feeling in your mouth'
 
-# Without Alcohol:
+  # Without Alcohol:
 
   # hot_choc:
   #   name: Hot Chocolate
@@ -849,12 +767,12 @@ recipes:
 
 # Enable checking of other Plugins (if installed) for Barrel Permissions [true]
 # Plugins 'Landlord' and 'Protection Stones' use the WorldGuard Flag. 'ClaimChunk' is natively supported.
-useWorldGuard: true
-useLWC: true
-useGriefPrevention: true
-useTowny: true
-useBlockLocker: true
-useGMInventories: true
+useWorldGuard: false
+useLWC: false
+useGriefPrevention: false
+useTowny: false
+useBlockLocker: false
+useGMInventories: false
 
 # Use a virtual chest when opening a Barrel to check with all other protection plugins
 # This could confuse Anti-Cheat plugins, but is otherwise good to use
@@ -863,7 +781,7 @@ useVirtualChestPerms: false
 
 
 # Enable the Logging of Barrel Inventories to LogBlock [true]
-useLogBlock: true
+useLogBlock: false
 
 
 # -- MultiServer/BungeeCord --
@@ -916,24 +834,24 @@ logRealChat: false
 
 # Text after specified commands will be distorted when drunk (list) [- /gl]
 distortCommands:
-- /gl
-- /global
-- /fl
-- /s
-- /letter
-- /g
-- /l
-- /lokal
-- /local
-- /mail send
-- /m
-- /msg
-- /w
-- /whisper
-- /reply
-- /r
-- /t
-- /tell
+  - /gl
+  - /global
+  - /fl
+  - /s
+  - /letter
+  - /g
+  - /l
+  - /lokal
+  - /local
+  - /mail send
+  - /m
+  - /msg
+  - /w
+  - /whisper
+  - /reply
+  - /r
+  - /t
+  - /tell
 
 # Distort the Text written on a Sign while drunk [false]
 distortSignText: false
@@ -941,8 +859,8 @@ distortSignText: false
 # Enclose a Chat text with these Letters to bypass Chat Distortion (Use "," as Separator) (list) [- '[,]']
 # Chat Example: Hello i am drunk *I am testing Brewery*
 distortBypass:
-- '*,*'
-- '[,]'
+  - '*,*'
+  - '[,]'
 
 # words: Words and letters that will be altered when chatting while being drunk.
 # Will be processed from first to last and a written sentece is altered in that order.
@@ -955,248 +873,248 @@ distortBypass:
 # percentage: Probability of replacing a Word in percent
 
 words:
--  replace: s
-   to: sh
-   percentage: 90
-   alcohol: 30
+  -  replace: s
+     to: sh
+     percentage: 90
+     alcohol: 30
 
--  replace: ch
-   to: sh
-   pre: u,s,o,a
-   match: false
-   alcohol: 10
-   percentage: 70
+  -  replace: ch
+     to: sh
+     pre: u,s,o,a
+     match: false
+     alcohol: 10
+     percentage: 70
 
--  replace: h
-   to: hh
-   pre: sch,h,t
-   match: false
-   percentage: 60
-   alcohol: 20
+  -  replace: h
+     to: hh
+     pre: sch,h,t
+     match: false
+     percentage: 60
+     alcohol: 20
 
--  replace: th
-   to: thl
-   percentage: 40
-   alcohol: 30
+  -  replace: th
+     to: thl
+     percentage: 40
+     alcohol: 30
 
--  replace: sch
-   to: shk
-   percentage: 60
-   alcohol: 40
+  -  replace: sch
+     to: shk
+     percentage: 60
+     alcohol: 40
 
--  replace: u
-   to: uuh
-   percentage: 20
+  -  replace: u
+     to: uuh
+     percentage: 20
 
--  replace: y
-   to: yy
-   percentage: 60
-   alcohol: 15
+  -  replace: y
+     to: yy
+     percentage: 60
+     alcohol: 15
 
--  replace: e
-   to: ee
-   percentage: 40
-   alcohol: 15
+  -  replace: e
+     to: ee
+     percentage: 40
+     alcohol: 15
 
--  replace: you
-   to: u
-   percentage: 40
+  -  replace: you
+     to: u
+     percentage: 40
 
--  replace: u
-   to: uo
-   pre: u
-   match: false
-   percentage: 60
+  -  replace: u
+     to: uo
+     pre: u
+     match: false
+     percentage: 60
 
--  replace: that
-   to: taht
-   percentage: 20
-   alcohol: 40
+  -  replace: that
+     to: taht
+     percentage: 20
+     alcohol: 40
 
--  replace: p
-   to: b
-   percentage: 30
+  -  replace: p
+     to: b
+     percentage: 30
 
--  replace: p
-   to: b
-   percentage: 70
-   alcohol: 60
+  -  replace: p
+     to: b
+     percentage: 70
+     alcohol: 60
 
--  replace: up
-   to: ubb
-   percentage: 80
-   alcohol: 25
+  -  replace: up
+     to: ubb
+     percentage: 80
+     alcohol: 25
 
--  replace: o
-   to: oh
-   percentage: 20
+  -  replace: o
+     to: oh
+     percentage: 20
 
--  replace: ei
-   to: i
-   percentage: 30
-   alcohol: 15
+  -  replace: ei
+     to: i
+     percentage: 30
+     alcohol: 15
 
--  replace: b
-   to: bb
-   percentage: 80
-   alcohol: 40
+  -  replace: b
+     to: bb
+     percentage: 80
+     alcohol: 40
 
--  replace: '!!!'
-   to: '!!!111!!!eleven!1!'
-   pre: '!'
-   match: false
-   percentage: 20
-   alcohol: 70
+  -  replace: '!!!'
+     to: '!!!111!!!eleven!1!'
+     pre: '!'
+     match: false
+     percentage: 20
+     alcohol: 70
 
--  replace: '!'
-   to: '!!'
-   pre: '!'
-   match: false
-   percentage: 90
+  -  replace: '!'
+     to: '!!'
+     pre: '!'
+     match: false
+     percentage: 90
 
--  replace: drunk
-   to: dhrkunn
-   pre: are
-   match: false
-   percentage: 70
-   alcohol: 65
+  -  replace: drunk
+     to: dhrkunn
+     pre: are
+     match: false
+     percentage: 70
+     alcohol: 65
 
--  replace: walk
-   to: whhealhk
-   pre: you can, you can still, you can not
-   match: false
-   percentage: 80
-   alcohol: 30
+  -  replace: walk
+     to: whhealhk
+     pre: you can, you can still, you can not
+     match: false
+     percentage: 80
+     alcohol: 30
 
--  replace: wtf
-   to: wft
-   percentage: 20
-   alcohol: 40
+  -  replace: wtf
+     to: wft
+     percentage: 20
+     alcohol: 40
 
--  replace: lol
-   to: loool
-   percentage: 80
-   alcohol: 10
+  -  replace: lol
+     to: loool
+     percentage: 80
+     alcohol: 10
 
--  replace: afk
-   to: aafkayyy
-   percentage: 30
-   alcohol: 30
+  -  replace: afk
+     to: aafkayyy
+     percentage: 30
+     alcohol: 30
 
--  replace: write
-   to: wreitt
-   pre: you can,you can still,you can not
-   match: false
-   percentage: 80
-   alcohol: 50
+  -  replace: write
+     to: wreitt
+     pre: you can,you can still,you can not
+     match: false
+     percentage: 80
+     alcohol: 50
 
--  replace: drink
-   to: booze
-   percentage: 80
-   alcohol: 70
+  -  replace: drink
+     to: booze
+     percentage: 80
+     alcohol: 70
 
--  replace: '?'
-   to: '????'
-   pre: '?'
-   match: false
-   percentage: 80
-   alcohol: 40
+  -  replace: '?'
+     to: '????'
+     pre: '?'
+     match: false
+     percentage: 80
+     alcohol: 40
 
--  replace: -space
-   to: ''
-   pre: h,g,w
-   match: true
-   alcohol: 10
+  -  replace: -space
+     to: ''
+     pre: h,g,w
+     match: true
+     alcohol: 10
 
--  replace: -space
-   to: ''
-   percentage: 30
-   alcohol: 35
+  -  replace: -space
+     to: ''
+     percentage: 30
+     alcohol: 35
 
--  replace: -space
-   to: ''
-   percentage: 10
+  -  replace: -space
+     to: ''
+     percentage: 10
 
--  replace: -start
-   to: dho
-   percentage: 15
-   alcohol: 50
+  -  replace: -start
+     to: dho
+     percentage: 15
+     alcohol: 50
 
--  replace: -start
-   to: hhn
-   percentage: 10
-   alcohol: 50
+  -  replace: -start
+     to: hhn
+     percentage: 10
+     alcohol: 50
 
--  replace: -random
-   to: lu
-   percentage: 10
+  -  replace: -random
+     to: lu
+     percentage: 10
 
--  replace: -random
-   to: lug
-   percentage: 10
-   alcohol: 50
+  -  replace: -random
+     to: lug
+     percentage: 10
+     alcohol: 50
 
--  replace: -random
-   to: blub
-   percentage: 20
-   alcohol: 80
+  -  replace: -random
+     to: blub
+     percentage: 20
+     alcohol: 80
 
--  replace: -random
-   to: lerg
-   percentage: 40
-   alcohol: 85
+  -  replace: -random
+     to: lerg
+     percentage: 40
+     alcohol: 85
 
--  replace: -random
-   to: gul
-   percentage: 40
-   alcohol: 80
+  -  replace: -random
+     to: gul
+     percentage: 40
+     alcohol: 80
 
--  replace: -random
-   to: ' '
-   percentage: 100
-   alcohol: 70
+  -  replace: -random
+     to: ' '
+     percentage: 100
+     alcohol: 70
 
--  replace: -random
-   to: ' '
-   percentage: 60
-   alcohol: 40
+  -  replace: -random
+     to: ' '
+     percentage: 60
+     alcohol: 40
 
--  replace: -random
-   to: ' '
-   percentage: 50
-   alcohol: 30
+  -  replace: -random
+     to: ' '
+     percentage: 50
+     alcohol: 30
 
--  replace: -end
-   to: '!'
-   percentage: 40
-   alcohol: 30
+  -  replace: -end
+     to: '!'
+     percentage: 40
+     alcohol: 30
 
--  replace: -random
-   to: ' *hic* '
-   percentage: 80
-   alcohol: 70
+  -  replace: -random
+     to: ' *ик* '
+     percentage: 80
+     alcohol: 70
 
--  replace: -random
-   to: ' *hic* '
-   percentage: 15
-   alcohol: 40
+  -  replace: -random
+     to: ' *ик* '
+     percentage: 15
+     alcohol: 40
 
--  replace: -space
-   to: ' *hic* '
-   percentage: 5
-   alcohol: 20
+  -  replace: -space
+     to: ' *ик* '
+     percentage: 5
+     alcohol: 20
 
--  replace: -end
-   to: ' *hic*'
-   percentage: 70
-   alcohol: 50
+  -  replace: -end
+     to: ' *ик*'
+     percentage: 70
+     alcohol: 50
 
--  replace: -all
-   to: '*burp*'
-   percentage: 3
-   alcohol: 60
+  -  replace: -all
+     to: '*отрыжка*'
+     percentage: 3
+     alcohol: 60
 
--  replace: -all
-   to: '*burp*'
-   percentage: 6
-   alcohol: 80
+  -  replace: -all
+     to: '*отрыжка*'
+     percentage: 6
+     alcohol: 80
